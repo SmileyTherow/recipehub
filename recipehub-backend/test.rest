@@ -1,0 +1,49 @@
+### Variables
+@baseUrl = http://localhost/recipehub-backend
+@contentType = application/x-www-form-urlencoded
+
+### TEST 1: Register User - Success
+POST {{baseUrl}}/auth/register
+Content-Type: {{@contentType}}
+
+name=Sarah&email=sarah@email.com&password=123456
+
+###
+
+### TEST 2: Register User - Email Already Exists
+POST {{baseUrl}}/auth/register
+Content-Type: {{@contentType}}
+
+name=Budi&email=sarah@email.com&password=123456
+
+###
+
+### TEST 3: Register User - Validation Failed (Password too short)
+POST {{baseUrl}}/auth/register
+Content-Type: {{@contentType}}
+
+name=Ani&email=ani@email.com&password=123
+
+###
+
+### TEST 4: Login User - Success
+POST {{baseUrl}}/auth/login
+Content-Type: {{@contentType}}
+
+email=sarah@email.com&password=123456
+
+###
+
+### TEST 5: Login User - Wrong Password
+POST {{baseUrl}}/auth/login
+Content-Type: {{@contentType}}
+
+email=sarah@email.com&password=654321
+
+###
+
+### TEST 6: Login User - Email Not Found
+POST {{baseUrl}}/auth/login
+Content-Type: {{@contentType}}
+
+email=notexist@email.com&password=123456

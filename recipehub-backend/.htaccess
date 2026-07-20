@@ -1,0 +1,20 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "*"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jika request adalah file yang benar-benar ada, jangan rewrite
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Jika request adalah folder yang benar-benar ada, jangan rewrite
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Rewrite semua request lainnya ke index.php dengan PATH_INFO
+    RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>

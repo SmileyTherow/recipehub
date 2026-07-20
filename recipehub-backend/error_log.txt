@@ -1,0 +1,329 @@
+[18-Jul-2026 05:56:32 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'recipes.description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(23): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 05:56:36 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'recipes.description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(23): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 05:57:57 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'recipes.description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(23): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 05:58:02 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'recipes.description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(23): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:51:02 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:51:08 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:51:09 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:52:16 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:52:20 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 07:52:22 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'description' in 'field list' in C:\xampp\htdocs\recipehub-backend\config\database.php:79
+Stack trace:
+#0 C:\xampp\htdocs\recipehub-backend\config\database.php(79): mysqli->prepare('\n            SE...')
+#1 C:\xampp\htdocs\recipehub-backend\models\Recipe.php(22): Database->prepare('\n            SE...')
+#2 C:\xampp\htdocs\recipehub-backend\controllers\recipes\RecipeController.php(29): Recipe->getByUserId(1)
+#3 C:\xampp\htdocs\recipehub-backend\index.php(111): RecipeController->getRecipes()
+#4 {main}
+  thrown in C:\xampp\htdocs\recipehub-backend\config\database.php on line 79
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] $_FILES=Array
+(
+    [image] => Array
+        (
+            [name] => scaled_nasi-goreng-usa-recipe.jpg
+            [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+            [type] => application/octet-stream
+            [tmp_name] => C:\xampp\tmp\php11B5.tmp
+            [error] => 0
+            [size] => 295170
+        )
+
+)
+
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] image error=0
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] image type='application/octet-stream'
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] image size=295170
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] calling FileUpload::uploadImage
+[18-Jul-2026 10:30:14 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php11B5.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 10:30:14 Europe/Berlin] [FileUpload] disallowed MIME type: 'application/octet-stream'
+[18-Jul-2026 10:30:14 Europe/Berlin] [RecipeController][editRecipe] FileUpload::uploadImage returned=false
+[18-Jul-2026 11:27:35 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php9291.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 11:27:35 Europe/Berlin] [FileUpload] disallowed MIME type: 'application/octet-stream'
+[18-Jul-2026 11:27:50 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpCDC6.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 11:27:50 Europe/Berlin] [FileUpload] disallowed MIME type: 'application/octet-stream'
+[18-Jul-2026 12:36:57 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php1359.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 12:36:57 Europe/Berlin] [FileUpload] disallowed MIME type: 'application/octet-stream'
+[18-Jul-2026 12:57:39 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php767.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 12:57:44 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php18BE.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 12:57:58 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php4F9E.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 13:27:51 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpAC23.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 13:27:51 Europe/Berlin] [FileUpload] upload dir exists? true (path=uploads/recipes/)
+[18-Jul-2026 13:27:51 Europe/Berlin] [FileUpload] uploadPath=uploads/recipes/1784374071_1250.jpg
+[18-Jul-2026 13:28:42 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php7502.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 13:28:42 Europe/Berlin] [FileUpload] upload dir exists? true (path=uploads/recipes/)
+[18-Jul-2026 13:28:42 Europe/Berlin] [FileUpload] uploadPath=uploads/recipes/1784374122_2499.jpg
+[18-Jul-2026 16:08:26 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpB2E1.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[18-Jul-2026 16:08:26 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[18-Jul-2026 16:08:26 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784383706_7889.jpg
+[18-Jul-2026 16:09:40 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_Nasi-Goreng-Spesial.jpg
+    [full_path] => scaled_Nasi-Goreng-Spesial.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpCE54.tmp
+    [error] => 0
+    [size] => 147159
+)
+
+[18-Jul-2026 16:09:40 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[18-Jul-2026 16:09:40 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784383780_6312.jpg
+[19-Jul-2026 03:13:11 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_Nasi-Goreng-Spesial.jpg
+    [full_path] => scaled_Nasi-Goreng-Spesial.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php384A.tmp
+    [error] => 0
+    [size] => 147159
+)
+
+[19-Jul-2026 03:13:11 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 03:13:11 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784423591_5131.jpg
+[19-Jul-2026 03:32:37 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_nasi-goreng-usa-recipe.jpg
+    [full_path] => scaled_nasi-goreng-usa-recipe.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php30A.tmp
+    [error] => 0
+    [size] => 295170
+)
+
+[19-Jul-2026 03:32:37 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 03:32:37 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784424757_9201.jpg
+[19-Jul-2026 03:32:57 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_green.jpg
+    [full_path] => scaled_green.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php5293.tmp
+    [error] => 0
+    [size] => 118369
+)
+
+[19-Jul-2026 03:32:57 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 03:32:57 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784424777_7384.jpg
+[19-Jul-2026 08:00:57 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000342868.jpg
+    [full_path] => scaled_1000342868.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php4C71.tmp
+    [error] => 0
+    [size] => 144871
+)
+
+[19-Jul-2026 08:00:57 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 08:00:57 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784440857_7542.jpg
+[19-Jul-2026 08:18:16 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000343443.jpg
+    [full_path] => scaled_1000343443.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php25E1.tmp
+    [error] => 0
+    [size] => 152217
+)
+
+[19-Jul-2026 08:18:16 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 08:18:16 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784441896_7420.jpg
+[19-Jul-2026 11:59:29 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000344187.jpg
+    [full_path] => scaled_1000344187.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpB059.tmp
+    [error] => 0
+    [size] => 102645
+)
+
+[19-Jul-2026 11:59:29 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[19-Jul-2026 11:59:29 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784455169_6039.jpg
+[20-Jul-2026 01:14:20 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000344296.jpg
+    [full_path] => scaled_1000344296.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php5366.tmp
+    [error] => 0
+    [size] => 33091
+)
+
+[20-Jul-2026 01:14:20 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[20-Jul-2026 01:14:20 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784502860_4957.jpg
+[20-Jul-2026 01:59:33 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000344297.jpg
+    [full_path] => scaled_1000344297.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\phpBB70.tmp
+    [error] => 0
+    [size] => 193534
+)
+
+[20-Jul-2026 01:59:33 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[20-Jul-2026 01:59:33 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784505573_6391.jpg
+[20-Jul-2026 02:30:38 Europe/Berlin] [FileUpload] uploadImage called. $_FILES['image']=Array
+(
+    [name] => scaled_1000344297.jpg
+    [full_path] => scaled_1000344297.jpg
+    [type] => application/octet-stream
+    [tmp_name] => C:\xampp\tmp\php2FFD.tmp
+    [error] => 0
+    [size] => 193534
+)
+
+[20-Jul-2026 02:30:38 Europe/Berlin] [FileUpload] upload dir exists? true (path=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/)
+[20-Jul-2026 02:30:38 Europe/Berlin] [FileUpload] uploadPath=C:\xampp\htdocs\recipehub-backend\helpers/../uploads/recipes/1784507438_9202.jpg
