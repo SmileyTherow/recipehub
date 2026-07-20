@@ -133,17 +133,81 @@ Berikut daftar endpoint utama yang digunakan pada aplikasi RecipeHub.
 
 ## 📸 Screenshot
 
-| Login | Register | Dashboard |
-|-------|----------|-----------|
-| ![Login](images/login.png) | ![Register](images/register.png) | ![Dashboard](images/dashboard.png) |
+### 🔐 Login
 
-| Daftar Resep | Tambah Resep | Detail Resep |
-|--------------|--------------|----------------|
-| ![Daftar Resep](images/daftar-resep.png) | ![Tambah Resep](images/tambah-resep.png) | ![Detail Resep](images/detail-resep.png) |
+![Login](images/login.jpeg)
 
-| Daftar Kategori | Tambah Kategori |
-|------------------|-------------------|
-| ![Daftar Kategori](images/daftar-kategori.png) | ![Tambah Kategori](images/tambah-kategori.png) |
+---
+
+### 📝 Register
+
+![Register](images/register.jpeg)
+
+---
+
+### 🏠 Dashboard
+
+![Dashboard](images/dashboard.jpeg)
+
+---
+
+### 🍽️ Daftar Resep
+
+![Daftar Resep](images/daftar-resep.jpeg)
+
+---
+
+### ➕ Tambah Resep
+
+![Tambah Resep](images/tambah-resep.jpeg)
+
+---
+
+### 📖 Detail Resep
+
+![Detail Resep](images/detail-resep.jpeg)
+
+---
+
+### ✏️ Edit Resep
+
+![Edit Resep](images/edit-resep.jpeg)
+
+---
+
+### 🗑️ Hapus Resep
+
+![Hapus Resep](images/hapus-resep.jpeg)
+
+---
+
+### 📂 Daftar Kategori
+
+![Daftar Kategori](images/daftar-kategori.jpeg)
+
+---
+
+### ➕ Tambah Kategori
+
+![Tambah Kategori](images/tambah-kategori.jpeg)
+
+---
+
+### ✏️ Edit Kategori
+
+![Edit Kategori](images/edit-kategori.jpeg)
+
+---
+
+### 🗑️ Hapus Kategori
+
+![Hapus Kategori](images/hapus-kategori.jpeg)
+
+---
+
+### 🚪 Logout
+
+![Logout](images/logout.jpeg)
 
 ---
 
