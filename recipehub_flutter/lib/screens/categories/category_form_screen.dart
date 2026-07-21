@@ -1,15 +1,4 @@
 // screens/categories/category_form_screen.dart
-/**
- * File: screens/categories/category_form_screen.dart
- * Fungsi: Form untuk tambah kategori baru atau edit kategori yang sudah ada
- * 
- * Mode:
- * - Tambah: Jika parameter category = null
- * - Edit: Jika parameter category = Category object
- * 
- * UPDATED: Tambah return value (true) untuk trigger refresh di list
- */
-
 import 'package:flutter/material.dart';
 import '../../services/category_service.dart';
 import '../../models/category.dart';
@@ -30,9 +19,7 @@ class CategoryFormScreen extends StatefulWidget {
 }
 
 class _CategoryFormScreenState extends State<CategoryFormScreen> {
-  // ============================================================
   // STATE VARIABLES
-  // ============================================================
   int? _userId;
   bool _isSubmitting = false;
 
@@ -57,13 +44,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     super.dispose();
   }
 
-  // ============================================================
   // LOAD USER ID
-  // ============================================================
-  /**
-   * Method: _loadUserId()
-   * Fungsi: Load user_id dari local storage
-   */
   Future<void> _loadUserId() async {
     try {
       final localStorage = LocalStorage();
@@ -82,13 +63,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     }
   }
 
-  // ============================================================
   // PREFILL DATA (MODE EDIT)
-  // ============================================================
-  /**
-   * Method: _prefillData()
-   * Fungsi: Pre-fill form dengan data kategori lama (mode edit)
-   */
   void _prefillData() {
     if (widget.category == null) return;
 
@@ -96,13 +71,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     _nameController.text = category.name;
   }
 
-  // ============================================================
   // HANDLE SUBMIT
-  // ============================================================
-  /**
-   * Method: _handleSubmit()
-   * Fungsi: Validasi form dan submit
-   */
   Future<void> _handleSubmit() async {
     // Validasi form
     if (!_formKey.currentState!.validate()) {
@@ -128,13 +97,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     }
   }
 
-  // ============================================================
   // ADD CATEGORY
-  // ============================================================
-  /**
-   * Method: _addCategory()
-   * Fungsi: Tambah kategori baru
-   */
   Future<void> _addCategory() async {
     try {
       if (_userId == null) return;
@@ -175,13 +138,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     }
   }
 
-  // ============================================================
   // EDIT CATEGORY
-  // ============================================================
-  /**
-   * Method: _editCategory()
-   * Fungsi: Edit kategori yang sudah ada
-   */
   Future<void> _editCategory() async {
     try {
       if (_userId == null || widget.category == null) return;
@@ -203,7 +160,8 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(response['message'] ?? 'Gagal memperbarui kategori'),
+              content:
+                  Text(response['message'] ?? 'Gagal memperbarui kategori'),
               backgroundColor: Color(AppColors.errorColor),
               duration: AppConstants.snackBarDuration,
             ),
@@ -223,13 +181,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     }
   }
 
-  // ============================================================
   // SHOW SUCCESS DIALOG
-  // ============================================================
-  /**
-   * Method: _showSuccessDialog()
-   * Fungsi: Tampilkan dialog sukses dan pop ke screen sebelumnya
-   */
   void _showSuccessDialog(String message, VoidCallback onOk) {
     showDialog(
       context: context,
@@ -250,13 +202,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     );
   }
 
-  // ============================================================
   // LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
@@ -293,9 +239,8 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ============================================================
               // HEADER
-              // ============================================================
+
               Text(
                 _isEditMode ? 'Edit Nama Kategori' : 'Tambah Kategori Baru',
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
@@ -317,9 +262,8 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
 
               SizedBox(height: 32),
 
-              // ============================================================
               // FORM
-              // ============================================================
+
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -327,15 +271,12 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
                   hintText: 'Masukkan nama kategori',
                   prefixIcon: Icon(Icons.category_outlined),
                 ),
-                validator: (value) =>
-                    Validators.validateCategoryName(value),
+                validator: (value) => Validators.validateCategoryName(value),
               ),
 
               SizedBox(height: 32),
 
-              // ============================================================
               // SUBMIT BUTTON
-              // ============================================================
               SizedBox(
                 width: double.infinity,
                 height: 50,

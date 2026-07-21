@@ -1,31 +1,15 @@
 <?php
-
-/**
- * File: models/User.php
- * Fungsi: Model untuk query user dari database
- */
-
 class User
 {
 
     // Property untuk database connection
     private $db;
 
-    /**
-     * Constructor
-     * Fungsi: Membuat instance Database
-     */
     public function __construct()
     {
         $this->db = new Database();
     }
 
-    /**
-     * Method: findByEmail()
-     * Fungsi: Cari user berdasarkan email menggunakan prepared statement
-     * Parameter: $email (string)
-     * Return: array (user data) atau null jika tidak ditemukan
-     */
     public function findByEmail($email)
     {
         // Prepared statement dengan placeholder (?)
@@ -50,12 +34,6 @@ class User
         return $user;
     }
 
-    /**
-     * Method: findById()
-     * Fungsi: Cari user berdasarkan ID
-     * Parameter: $id (integer)
-     * Return: array (user data) atau null
-     */
     public function findById($id)
     {
         $stmt = $this->db->prepare("SELECT id, name, email FROM users WHERE id = ?");
@@ -68,15 +46,6 @@ class User
         return $user;
     }
 
-    /**
-     * Method: create()
-     * Fungsi: Buat user baru dengan password yang di-hash
-     * Parameter: $data (array)
-     *   - $data['name'] (string)
-     *   - $data['email'] (string)
-     *   - $data['password'] (string) - akan di-hash secara otomatis
-     * Return: integer (user ID) atau false jika gagal
-     */
     public function create($data)
     {
         // Hash password menggunakan BCRYPT algorithm
@@ -102,12 +71,6 @@ class User
         return false;
     }
 
-    /**
-     * Method: emailExists()
-     * Fungsi: Cek apakah email sudah terdaftar di database
-     * Parameter: $email (string)
-     * Return: boolean (true jika sudah ada, false jika belum)
-     */
     public function emailExists($email)
     {
         // Gunakan method findByEmail untuk cek

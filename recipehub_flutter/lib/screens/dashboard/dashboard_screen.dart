@@ -1,16 +1,4 @@
 // screens/dashboard/dashboard_screen.dart
-/**
- * File: screens/dashboard/dashboard_screen.dart
- * Fungsi: Dashboard Screen - menampilkan home page setelah login
- * 
- * Alur:
- * 1. Load data dari API (total resep, total kategori, resep terbaru)
- * 2. Tampilkan greeting dengan nama user
- * 3. Tampilkan statistics cards
- * 4. Tampilkan list resep terbaru
- * 5. Bottom navigation untuk navigate ke screen lain
- */
-
 import 'package:flutter/material.dart';
 import '../../services/dashboard_service.dart';
 import '../../services/recipe_service.dart';
@@ -26,9 +14,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  // ============================================================
   // STATE VARIABLES
-  // ============================================================
   int? _userId;
   String? _userName;
   bool _isLoading = true;
@@ -43,16 +29,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _loadDashboardData();
   }
 
-  // ============================================================
   // LOAD DASHBOARD DATA
-  // ============================================================
-  /**
-   * Method: _loadDashboardData()
-   * Fungsi:
-   * 1. Ambil user_id & name dari local storage
-   * 2. Call DashboardService untuk get dashboard data
-   * 3. Update state dengan data yang diterima
-   */
   Future<void> _loadDashboardData() async {
     try {
       final localStorage = LocalStorage();
@@ -108,13 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user & kembali ke login screen
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
@@ -124,9 +95,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  // ============================================================
   // LOGOUT CONFIRMATION
-  // ============================================================
   void _showLogoutDialog() {
     showDialog(
       context: context,
@@ -154,13 +123,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // ============================================================
   // HANDLE NAVIGATION
-  // ============================================================
-  /**
-   * Method: _handleNavigation()
-   * Fungsi: Handle bottom navigation bar tap
-   */
   void _handleNavigation(int index) {
     setState(() {
       _currentNavIndex = index;
@@ -215,9 +178,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // ============================================================
                     // GREETING
-                    // ============================================================
                     Text(
                       'Halo, $_userName! 👋',
                       style: Theme.of(context).textTheme.displayMedium?.copyWith(
@@ -235,9 +196,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                     SizedBox(height: 24),
 
-                    // ============================================================
                     // STATISTICS CARDS
-                    // ============================================================
                     Row(
                       children: [
                         // Total Recipes Card
@@ -264,9 +223,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                     SizedBox(height: 32),
 
-                    // ============================================================
                     // LATEST RECIPES SECTION
-                    // ============================================================
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -389,9 +346,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-// ============================================================
 // STATISTIC CARD WIDGET
-// ============================================================
 class _StatisticCard extends StatelessWidget {
   final String title;
   final String value;
@@ -445,9 +400,7 @@ class _StatisticCard extends StatelessWidget {
   }
 }
 
-// ============================================================
 // RECIPE LIST ITEM WIDGET
-// ============================================================
 class _RecipeListItem extends StatelessWidget {
   final Recipe recipe;
 

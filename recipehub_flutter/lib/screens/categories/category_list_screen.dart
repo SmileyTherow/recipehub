@@ -1,11 +1,4 @@
 // screens/categories/category_list_screen.dart
-/**
- * File: screens/categories/category_list_screen.dart
- * Fungsi: Menampilkan daftar semua kategori resep user dengan fitur edit & delete
- * 
- * UPDATED: Menghapus tampilan ID dari card kategori dan merapikan spacing
- */
-
 import 'package:flutter/material.dart';
 import '../../services/category_service.dart';
 import '../../models/category.dart';
@@ -41,17 +34,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     super.dispose();
   }
 
-  // ============================================================
   // LOAD DATA
-  // ============================================================
-
-  // ============================================================
-  // LOAD DATA
-  // ============================================================
-  /**
-   * Method: _loadData()
-   * Fungsi: Load user_id dan ambil data categories
-   */
   Future<void> _loadData() async {
     try {
       final localStorage = LocalStorage();
@@ -75,13 +58,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     }
   }
 
-  // ============================================================
   // LOAD CATEGORIES
-  // ============================================================
-  /**
-   * Method: _loadCategories()
-   * Fungsi: Ambil daftar kategori dari backend
-   */
   Future<void> _loadCategories() async {
     try {
       if (_userId == null) return;
@@ -124,13 +101,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     });
   }
 
-  // ============================================================
   // HANDLE ADD CATEGORY
-  // ============================================================
-  /**
-   * Method: _handleAddCategory()
-   * Fungsi: Navigate ke add category form
-   */
   Future<void> _handleAddCategory() async {
     try {
       final result = await Navigator.pushNamed(
@@ -168,13 +139,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE EDIT CATEGORY
-  // ============================================================
-  /**
-   * Method: _handleEditCategory()
-   * Fungsi: Navigate ke edit category form
-   */
   Future<void> _handleEditCategory(Category category) async {
     try {
       final result = await Navigator.pushNamed(
@@ -213,13 +178,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE DELETE
-  // ============================================================
-  /**
-   * Method: _handleDelete()
-   * Fungsi: Show delete confirmation dialog
-   */
   void _handleDelete(Category category) {
     showDialog(
       context: context,
@@ -250,13 +209,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     );
   }
 
-  // ============================================================
   // DELETE CATEGORY
-  // ============================================================
-  /**
-   * Method: _deleteCategory()
-   * Fungsi: Delete kategori dari backend
-   */
   Future<void> _deleteCategory(Category category) async {
     try {
       if (_userId == null) return;
@@ -314,13 +267,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE NAVIGATION
-  // ============================================================
-  /**
-   * Method: _handleNavigation()
-   * Fungsi: Handle bottom navigation bar tap
-   */
   void _handleNavigation(int index) {
     setState(() {
       _currentNavIndex = index;
@@ -345,13 +292,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     }
   }
 
-  // ============================================================
   // LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
@@ -465,9 +406,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     );
   }
 
-  // ============================================================
   // LOADING STATE
-  // ============================================================
   Widget _buildLoadingState() {
     return Center(
       child: Column(
@@ -492,9 +431,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     );
   }
 
-  // ============================================================
   // EMPTY STATE
-  // ============================================================
   Widget _buildEmptyState() {
     return Center(
       child: SingleChildScrollView(
@@ -541,9 +478,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     );
   }
 
-  // ============================================================
   // ERROR STATE
-  // ============================================================
   Widget _buildErrorState() {
     return Center(
       child: SingleChildScrollView(
@@ -589,9 +524,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
   }
 }
 
-// ============================================================
 // CATEGORY CARD WIDGET
-// ============================================================
 class _CategoryCard extends StatelessWidget {
   final Category category;
   final bool isDeleting;

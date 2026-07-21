@@ -1,25 +1,4 @@
 // screens/recipes/recipe_form_screen.dart
-// screens/recipes/recipe_form_screen.dart
-/**
- * File: screens/recipes/recipe_form_screen.dart
- * Fungsi: Form untuk tambah resep baru atau edit resep yang sudah ada
- * 
- * Mode:
- * - Tambah: Jika parameter recipe = null
- * - Edit: Jika parameter recipe = Recipe object
- * 
- * Fitur Image:
- * - Pick image dari gallery
- * - Preview image sebelum disimpan
- * - Upload image saat create recipe
- * - Replace image saat edit recipe
- * - Tampilkan image lama jika ada
- * 
- * Return:
- * - true: Jika operasi berhasil (perlu refresh)
- * - false/null: Jika dibatalkan
- */
- 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../services/recipe_service.dart';
@@ -30,28 +9,27 @@ import '../../utils/local_storage.dart';
 import '../../utils/validators.dart';
 import '../../utils/constants.dart';
 import '../../utils/platform_image.dart';
- 
+
 class RecipeFormScreen extends StatefulWidget {
   final Recipe? recipe;
- 
+
   const RecipeFormScreen({
     Key? key,
     this.recipe,
   }) : super(key: key);
- 
+
   @override
   State<RecipeFormScreen> createState() => _RecipeFormScreenState();
 }
- 
+
 class _RecipeFormScreenState extends State<RecipeFormScreen> {
-  // ============================================================
   // STATE VARIABLES
-  // ============================================================
+
   int? _userId;
   List<Category> _categories = [];
   bool _isLoadingCategories = true;
   bool _isSubmitting = false;
- 
+
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _cookingTimeController = TextEditingController();
@@ -59,18 +37,18 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
   final _descriptionController = TextEditingController();
   final _ingredientsController = TextEditingController();
   final _stepsController = TextEditingController();
- 
+
   int? _selectedCategoryId;
- 
+
   // Image variables: use XFile to store selected image (works on web & mobile)
   XFile? _selectedImageFile;
   String? _oldImageUrl;
- 
+
   // Mode: true = Edit, false = Tambah
   bool get _isEditMode => widget.recipe != null;
- 
+
   final ImagePicker _imagePicker = ImagePicker();
- 
+
   @override
   void initState() {
     super.initState();
@@ -79,7 +57,7 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       _prefillData();
     }
   }
- 
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -90,47 +68,35 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
     _stepsController.dispose();
     super.dispose();
   }
- 
-  // ============================================================
+
   // LOAD DATA
-  // ============================================================
-  /**
-   * Method: _loadData()
-   * Fungsi: Load user_id dan kategori
-   */
   Future<void> _loadData() async {
     try {
       final localStorage = LocalStorage();
       final userId = await localStorage.getUserId();
- 
+
       if (userId == null) {
         _logout();
         return;
       }
- 
+
       setState(() {
         _userId = userId;
       });
- 
+
       await _loadCategories();
     } catch (e) {
       debugPrint('Error loading data: $e');
     }
   }
- 
-  // ============================================================
+
   // LOAD CATEGORIES
-  // ============================================================
-  /**
-   * Method: _loadCategories()
-   * Fungsi: Ambil daftar kategori untuk dropdown
-   */
   Future<void> _loadCategories() async {
     try {
       if (_userId == null) return;
- 
+
       final response = await CategoryService.getCategories(userId: _userId!);
- 
+
       if (response['success'] == true && response['categories'] != null) {
         setState(() {
           _categories = response['categories'] ?? [];
@@ -144,17 +110,11 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       });
     }
   }
- 
-  // ============================================================
+
   // PREFILL DATA (MODE EDIT)
-  // ============================================================
-  /**
-   * Method: _prefillData()
-   * Fungsi: Pre-fill form dengan data resep lama (mode edit)
-   */
   void _prefillData() {
     if (widget.recipe == null) return;
- 
+
     final recipe = widget.recipe!;
     _nameController.text = recipe.name;
     _cookingTimeController.text = recipe.cookingTime.toString();
@@ -165,26 +125,20 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
     _selectedCategoryId = recipe.categoryId;
     _oldImageUrl = recipe.image; // Simpan URL gambar lama
   }
- 
-  // ============================================================
+
   // PICK IMAGE FROM GALLERY
-  // ============================================================
-  /**
-   * Method: _pickImageFromGallery()
-   * Fungsi: Buka gallery dan pilih gambar
-   */
   Future<void> _pickImageFromGallery() async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
         imageQuality: 85, // Compress image quality to 85%
       );
- 
+
       if (pickedFile != null) {
         setState(() {
           _selectedImageFile = pickedFile;
         });
- 
+
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -207,26 +161,20 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       }
     }
   }
- 
-  // ============================================================
+
   // TAKE PHOTO FROM CAMERA
-  // ============================================================
-  /**
-   * Method: _takePhotoFromCamera()
-   * Fungsi: Ambil foto menggunakan kamera
-   */
   Future<void> _takePhotoFromCamera() async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.camera,
         imageQuality: 85, // Compress image quality to 85%
       );
- 
+
       if (pickedFile != null) {
         setState(() {
           _selectedImageFile = pickedFile;
         });
- 
+
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -249,19 +197,13 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       }
     }
   }
- 
-  // ============================================================
+
   // REMOVE SELECTED IMAGE
-  // ============================================================
-  /**
-   * Method: _removeSelectedImage()
-   * Fungsi: Hapus gambar yang dipilih
-   */
   void _removeSelectedImage() {
     setState(() {
       _selectedImageFile = null;
     });
- 
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Gambar dihapus'),
@@ -270,14 +212,8 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       ),
     );
   }
- 
-  // ============================================================
+
   // SHOW IMAGE PICKER OPTIONS
-  // ============================================================
-  /**
-   * Method: _showImagePickerOptions()
-   * Fungsi: Tampilkan bottom sheet dengan pilihan gallery/camera
-   */
   void _showImagePickerOptions() {
     showModalBottomSheet(
       context: context,
@@ -335,20 +271,14 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       ),
     );
   }
- 
-  // ============================================================
+
   // HANDLE SUBMIT
-  // ============================================================
-  /**
-   * Method: _handleSubmit()
-   * Fungsi: Validasi form dan submit
-   */
   Future<void> _handleSubmit() async {
     // Validasi form
     if (!_formKey.currentState!.validate()) {
       return;
     }
- 
+
     // Validasi kategori dipilih
     if (_selectedCategoryId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -360,11 +290,11 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       );
       return;
     }
- 
+
     setState(() {
       _isSubmitting = true;
     });
- 
+
     try {
       if (_isEditMode) {
         await _editRecipe();
@@ -379,18 +309,12 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       }
     }
   }
- 
-  // ============================================================
+
   // ADD RECIPE WITH IMAGE
-  // ============================================================
-  /**
-   * Method: _addRecipe()
-   * Fungsi: Tambah resep baru dengan gambar
-   */
   Future<void> _addRecipe() async {
     try {
       if (_userId == null) return;
- 
+
       final response = await RecipeService.addRecipe(
         userId: _userId!,
         categoryId: _selectedCategoryId!,
@@ -402,7 +326,7 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
         servings: int.parse(_servingsController.text.trim()),
         imageFile: _selectedImageFile, // Send selected image as XFile (null-ok)
       );
- 
+
       if (response['success'] == true) {
         _showSuccessDialog(
           'Resep Berhasil Ditambahkan',
@@ -433,18 +357,12 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       }
     }
   }
- 
-  // ============================================================
+
   // EDIT RECIPE WITH IMAGE
-  // ============================================================
-  /**
-   * Method: _editRecipe()
-   * Fungsi: Edit resep dengan opsi update gambar
-   */
   Future<void> _editRecipe() async {
     try {
       if (_userId == null || widget.recipe == null) return;
- 
+
       final response = await RecipeService.editRecipe(
         recipeId: widget.recipe!.id,
         userId: _userId!,
@@ -457,7 +375,7 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
         servings: int.parse(_servingsController.text.trim()),
         imageFile: _selectedImageFile, // Send new image as XFile if any
       );
- 
+
       if (response['success'] == true) {
         _showSuccessDialog(
           'Resep Berhasil Diperbarui',
@@ -488,14 +406,8 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       }
     }
   }
- 
-  // ============================================================
+
   // SHOW SUCCESS DIALOG
-  // ============================================================
-  /**
-   * Method: _showSuccessDialog()
-   * Fungsi: Tampilkan dialog sukses dan pop ke screen sebelumnya
-   */
   void _showSuccessDialog(String message, VoidCallback onOk) {
     showDialog(
       context: context,
@@ -515,23 +427,17 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
       ),
     );
   }
- 
-  // ============================================================
+
   // LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
- 
+
     if (mounted) {
       Navigator.of(context).pushReplacementNamed('/login');
     }
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -557,9 +463,8 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ============================================================
             // IMAGE PREVIEW SECTION
-            // ============================================================
+
             Container(
               width: double.infinity,
               height: 200,
@@ -692,19 +597,17 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                           ),
                         ),
             ),
- 
+
             SizedBox(height: 20),
- 
-            // ============================================================
+
             // FORM
-            // ============================================================
+
             Form(
               key: _formKey,
               child: Column(
                 children: [
-                  // ============================================================
                   // IMAGE PICKER BUTTONS
-                  // ============================================================
+
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -726,9 +629,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                       ),
                     ),
                   ),
- 
+
                   SizedBox(height: 24),
- 
+
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(
@@ -738,9 +641,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                     ),
                     validator: (value) => Validators.validateRecipeName(value),
                   ),
- 
+
                   SizedBox(height: 16),
- 
+
                   _isLoadingCategories
                       ? SizedBox(
                           height: 56,
@@ -772,8 +675,8 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                                     DropdownMenuItem<int?>(
                                       value: null,
                                       child: Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 12),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12),
                                         child: Text('Tidak ada kategori'),
                                       ),
                                     ),
@@ -782,8 +685,8 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                                     DropdownMenuItem<int?>(
                                       value: null,
                                       child: Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 12),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12),
                                         child: Text('Pilih Kategori'),
                                       ),
                                     ),
@@ -805,9 +708,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                             },
                           ),
                         ),
- 
+
                   SizedBox(height: 16),
- 
+
                   Row(
                     children: [
                       Expanded(
@@ -833,14 +736,15 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                             hintText: '4',
                             prefixIcon: Icon(Icons.restaurant_outlined),
                           ),
-                          validator: (value) => Validators.validateServings(value),
+                          validator: (value) =>
+                              Validators.validateServings(value),
                         ),
                       ),
                     ],
                   ),
- 
+
                   SizedBox(height: 16),
- 
+
                   TextFormField(
                     controller: _descriptionController,
                     maxLines: 2,
@@ -851,9 +755,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                       alignLabelWithHint: true,
                     ),
                   ),
- 
+
                   SizedBox(height: 16),
- 
+
                   TextFormField(
                     controller: _ingredientsController,
                     maxLines: 6,
@@ -866,9 +770,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                     ),
                     validator: (value) => Validators.validateIngredients(value),
                   ),
- 
+
                   SizedBox(height: 16),
- 
+
                   TextFormField(
                     controller: _stepsController,
                     maxLines: 6,
@@ -881,9 +785,9 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                     ),
                     validator: (value) => Validators.validateSteps(value),
                   ),
- 
+
                   SizedBox(height: 32),
- 
+
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -916,7 +820,7 @@ class _RecipeFormScreenState extends State<RecipeFormScreen> {
                             ),
                     ),
                   ),
-  
+
                   SizedBox(height: 16),
                 ],
               ),

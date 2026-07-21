@@ -1,20 +1,9 @@
 // utils/local_storage.dart
-/**
- * File: utils/local_storage.dart
- * Fungsi: Helper untuk menyimpan & mengambil data lokal menggunakan SharedPreferences
- * 
- * Penjelasan:
- * - Digunakan untuk menyimpan session user (user_id, token, dll)
- * - Digunakan untuk menyimpan data lokal lainnya
- * - Wrapper untuk SharedPreferences agar lebih mudah digunakan
- */
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
-  // ============================================================
   // SINGLETON PATTERN
-  // ============================================================
+
   static final LocalStorage _instance = LocalStorage._internal();
 
   factory LocalStorage() {
@@ -23,9 +12,8 @@ class LocalStorage {
 
   LocalStorage._internal();
 
-  // ============================================================
   // STORAGE KEYS
-  // ============================================================
+
   // Keys untuk session/user data
   static const String userIdKey = 'user_id';
   static const String userNameKey = 'user_name';
@@ -33,18 +21,7 @@ class LocalStorage {
   static const String isLoggedInKey = 'is_logged_in';
   static const String recentRecipesKey = 'recent_recipes';
 
-  // ============================================================
   // SAVE USER DATA (saat login berhasil)
-  // ============================================================
-  /**
-   * Method: saveUserData()
-   * Fungsi: Simpan data user ke local storage setelah login berhasil
-   * Parameter:
-   *   - userId: ID user dari backend
-   *   - userName: Nama user dari backend
-   *   - userEmail: Email user dari backend
-   * Return: Future<bool> (true jika berhasil, false jika gagal)
-   */
   Future<bool> saveUserData({
     required int userId,
     required String userName,
@@ -66,14 +43,7 @@ class LocalStorage {
     }
   }
 
-  // ============================================================
   // GET USER DATA
-  // ============================================================
-  /**
-   * Method: getUserId()
-   * Fungsi: Ambil user ID dari local storage
-   * Return: int? (null jika tidak ada/user belum login)
-   */
   Future<int?> getUserId() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -84,11 +54,6 @@ class LocalStorage {
     }
   }
 
-  /**
-   * Method: getUserName()
-   * Fungsi: Ambil nama user dari local storage
-   * Return: String? (null jika tidak ada)
-   */
   Future<String?> getUserName() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -99,11 +64,6 @@ class LocalStorage {
     }
   }
 
-  /**
-   * Method: getUserEmail()
-   * Fungsi: Ambil email user dari local storage
-   * Return: String? (null jika tidak ada)
-   */
   Future<String?> getUserEmail() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -114,11 +74,6 @@ class LocalStorage {
     }
   }
 
-  /**
-   * Method: isLoggedIn()
-   * Fungsi: Cek apakah user sudah login
-   * Return: Future<bool> (true jika sudah login, false jika belum)
-   */
   Future<bool> isLoggedIn() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -129,14 +84,7 @@ class LocalStorage {
     }
   }
 
-  // ============================================================
   // GET ALL USER DATA (dalam satu method)
-  // ============================================================
-  /**
-   * Method: getUserData()
-   * Fungsi: Ambil semua data user sekaligus
-   * Return: Map<String, dynamic> dengan keys: user_id, user_name, user_email
-   */
   Future<Map<String, dynamic>> getUserData() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -152,14 +100,12 @@ class LocalStorage {
     }
   }
 
-  // ============================================================
   // SAVE RECENT RECIPE
-  // ============================================================
+
   Future<void> saveRecentRecipe(int recipeId) async {
     final prefs = await SharedPreferences.getInstance();
 
-    List<String> recent =
-        prefs.getStringList(recentRecipesKey) ?? [];
+    List<String> recent = prefs.getStringList(recentRecipesKey) ?? [];
 
     // hapus jika sudah ada
     recent.remove(recipeId.toString());
@@ -175,35 +121,25 @@ class LocalStorage {
     await prefs.setStringList(recentRecipesKey, recent);
   }
 
-  // ============================================================
   // GET RECENT RECIPES
-  // ============================================================
+
   Future<List<int>> getRecentRecipes() async {
     final prefs = await SharedPreferences.getInstance();
 
-    final recent =
-        prefs.getStringList(recentRecipesKey) ?? [];
+    final recent = prefs.getStringList(recentRecipesKey) ?? [];
 
     return recent.map(int.parse).toList();
   }
 
-  // ============================================================
   // CLEAR RECENT RECIPES
-  // ============================================================
+
   Future<void> clearRecentRecipes() async {
     final prefs = await SharedPreferences.getInstance();
 
     await prefs.remove(recentRecipesKey);
   }
 
-  // ============================================================
   // LOGOUT (hapus semua user data)
-  // ============================================================
-  /**
-   * Method: logout()
-   * Fungsi: Hapus semua data user (saat logout)
-   * Return: Future<bool> (true jika berhasil, false jika gagal)
-   */
   Future<bool> logout() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -221,14 +157,7 @@ class LocalStorage {
     }
   }
 
-  // ============================================================
   // CLEAR ALL DATA (optional)
-  // ============================================================
-  /**
-   * Method: clearAll()
-   * Fungsi: Hapus semua data di local storage (reset aplikasi)
-   * Return: Future<bool> (true jika berhasil)
-   */
   Future<bool> clearAll() async {
     try {
       final prefs = await SharedPreferences.getInstance();

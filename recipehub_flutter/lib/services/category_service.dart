@@ -1,9 +1,4 @@
 // services/category_service.dart
-/**
- * File: services/category_service.dart
- * Fungsi: Service untuk handle Category API calls
- */
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -11,15 +6,7 @@ import '../config/api_config.dart';
 import '../models/category.dart';
 
 class CategoryService {
-  // ============================================================
   // GET ALL CATEGORIES
-  // ============================================================
-  /**
-   * Method: getCategories()
-   * Fungsi: Ambil semua kategori user
-   * Parameter: userId
-   * Return: List<Category>
-   */
   static Future<Map<String, dynamic>> getCategories({
     required int userId,
   }) async {
@@ -37,9 +24,8 @@ class CategoryService {
 
       if (responseData['success'] == true) {
         final List<dynamic> categoryList = responseData['data'] ?? [];
-        final categories = categoryList
-            .map((json) => Category.fromJson(json))
-            .toList();
+        final categories =
+            categoryList.map((json) => Category.fromJson(json)).toList();
 
         return {
           'success': true,
@@ -68,15 +54,7 @@ class CategoryService {
     }
   }
 
-  // ============================================================
   // ADD CATEGORY
-  // ============================================================
-  /**
-   * Method: addCategory()
-   * Fungsi: Tambah kategori baru
-   * Parameter: userId, name
-   * Return: success status & category_id
-   */
   static Future<Map<String, dynamic>> addCategory({
     required int userId,
     required String name,
@@ -115,15 +93,7 @@ class CategoryService {
     }
   }
 
-  // ============================================================
   // EDIT CATEGORY
-  // ============================================================
-  /**
-   * Method: editCategory()
-   * Fungsi: Edit kategori
-   * Parameter: categoryId, userId, name
-   * Return: success status
-   */
   static Future<Map<String, dynamic>> editCategory({
     required int categoryId,
     required int userId,
@@ -162,15 +132,7 @@ class CategoryService {
     }
   }
 
-  // ============================================================
   // DELETE CATEGORY
-  // ============================================================
-  /**
-   * Method: deleteCategory()
-   * Fungsi: Hapus kategori
-   * Parameter: categoryId, userId
-   * Return: success status
-   */
   static Future<Map<String, dynamic>> deleteCategory({
     required int categoryId,
     required int userId,

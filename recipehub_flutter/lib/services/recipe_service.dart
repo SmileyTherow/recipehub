@@ -1,10 +1,4 @@
 // services/recipe_service.dart
-// services/recipe_service.dart
-/**
- * File: services/recipe_service.dart
- * Fungsi: Service untuk handle Recipe API calls dengan multipart image upload
- */
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
@@ -14,15 +8,7 @@ import '../config/api_config.dart';
 import '../models/recipe.dart';
 
 class RecipeService {
-  // ============================================================
   // GET ALL RECIPES
-  // ============================================================
-  /**
-   * Method: getRecipes()
-   * Fungsi: Ambil semua resep user
-   * Parameter: userId (int)
-   * Return: List<Recipe>
-   */
   static Future<Map<String, dynamic>> getRecipes({
     required int userId,
   }) async {
@@ -70,22 +56,14 @@ class RecipeService {
     }
   }
 
-  // ============================================================
   // GET RECIPE DETAIL
-  // ============================================================
-  /**
-   * Method: getRecipeDetail()
-   * Fungsi: Ambil detail satu resep
-   * Parameter: recipeId, userId
-   * Return: Recipe object
-   */
   static Future<Map<String, dynamic>> getRecipeDetail({
     required int recipeId,
     required int userId,
   }) async {
     try {
-      final url = Uri.parse(
-          '${ApiConfig.recipeDetail(recipeId)}?user_id=$userId');
+      final url =
+          Uri.parse('${ApiConfig.recipeDetail(recipeId)}?user_id=$userId');
 
       final response = await http
           .get(
@@ -122,19 +100,7 @@ class RecipeService {
     }
   }
 
-  // ============================================================
   // ADD RECIPE WITH IMAGE (MULTIPART)
-  // ============================================================
-  /**
-   * Method: addRecipe()
-   * Fungsi: Tambah resep baru dengan multipart image upload
-   * Parameter: userId, categoryId, name, ingredients, steps, cookingTime, servings, imageFile
-   * Return: success status & recipe_id
-   *
-   * Note: imageFile sekarang bertipe XFile?:
-   * - Web: upload via MultipartFile.fromBytes
-   * - Mobile: upload via MultipartFile.fromPath
-   */
   static Future<Map<String, dynamic>> addRecipe({
     required int userId,
     required int categoryId,
@@ -213,19 +179,7 @@ class RecipeService {
     }
   }
 
-  // ============================================================
   // EDIT RECIPE WITH IMAGE (MULTIPART)
-  // ============================================================
-  /**
-   * Method: editRecipe()
-   * Fungsi: Edit resep dengan multipart image upload
-   * Parameter: recipeId, userId, dan field-field yang diupdate
-   * Return: success status
-   *
-   * Note: imageFile sekarang bertipe XFile?:
-   * - Web: upload via MultipartFile.fromBytes
-   * - Mobile: upload via MultipartFile.fromPath
-   */
   static Future<Map<String, dynamic>> editRecipe({
     required int recipeId,
     required int userId,
@@ -306,15 +260,7 @@ class RecipeService {
     }
   }
 
-  // ============================================================
   // DELETE RECIPE
-  // ============================================================
-  /**
-   * Method: deleteRecipe()
-   * Fungsi: Hapus resep
-   * Parameter: recipeId, userId
-   * Return: success status
-   */
   static Future<Map<String, dynamic>> deleteRecipe({
     required int recipeId,
     required int userId,
@@ -351,15 +297,7 @@ class RecipeService {
     }
   }
 
-  // ============================================================
   // SEARCH & FILTER RECIPES (LOCAL - di client side)
-  // ============================================================
-  /**
-   * Method: searchRecipes()
-   * Fungsi: Search resep berdasarkan nama (client side)
-   * Parameter: recipes (list), query (string)
-   * Return: List<Recipe> yang match dengan query
-   */
   static List<Recipe> searchRecipes({
     required List<Recipe> recipes,
     required String query,
@@ -375,15 +313,7 @@ class RecipeService {
     }).toList();
   }
 
-  // ============================================================
   // FILTER BY CATEGORY (LOCAL - di client side)
-  // ============================================================
-  /**
-   * Method: filterByCategory()
-   * Fungsi: Filter resep berdasarkan kategori (client side)
-   * Parameter: recipes (list), categoryId (int)
-   * Return: List<Recipe> yang sesuai kategori
-   */
   static List<Recipe> filterByCategory({
     required List<Recipe> recipes,
     required int? categoryId,
@@ -397,15 +327,7 @@ class RecipeService {
     }).toList();
   }
 
-  // ============================================================
   // COMBINED SEARCH & FILTER
-  // ============================================================
-  /**
-   * Method: searchAndFilter()
-   * Fungsi: Search dan filter resep sekaligus (client side)
-   * Parameter: recipes (list), query (string), categoryId (int?)
-   * Return: List<Recipe> yang sudah di-search dan di-filter
-   */
   static List<Recipe> searchAndFilter({
     required List<Recipe> recipes,
     required String query,

@@ -1,9 +1,4 @@
 // services/dashboard_service.dart
-/**
- * File: services/dashboard_service.dart
- * Fungsi: Service untuk handle Dashboard API calls
- */
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -11,15 +6,7 @@ import '../config/api_config.dart';
 import '../models/recipe.dart';
 
 class DashboardService {
-  // ============================================================
   // GET DASHBOARD DATA
-  // ============================================================
-  /**
-   * Method: getDashboard()
-   * Fungsi: Ambil data dashboard (total resep, total kategori, resep terbaru)
-   * Parameter: userId
-   * Return: Map dengan dashboard data
-   */
   static Future<Map<String, dynamic>> getDashboard({
     required int userId,
   }) async {

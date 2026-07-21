@@ -1,28 +1,14 @@
 <?php
-/**
- * File: controllers/categories/CategoryController.php
- * Fungsi: Handle CRUD operations untuk category
- */
-
 class CategoryController {
-    
     private $category;
     private $recipe;
     
-    /**
-     * Constructor
-     */
+    /** Constructor */
     public function __construct() {
         $this->category = new Category();
         $this->recipe = new Recipe();
     }
     
-    /**
-     * Method: getCategories()
-     * Fungsi: Get semua kategori milik satu user
-     * Request: GET /categories?user_id=1
-     * Response: array of categories
-     */
     public function getCategories() {
         // 1. EXTRACT USER_ID
         $userId = isset($_GET['user_id']) ? $_GET['user_id'] : null;
@@ -41,13 +27,6 @@ class CategoryController {
         Response::success($categories, "Kategori loaded");
     }
     
-    /**
-     * Method: addCategory()
-     * Fungsi: Create kategori baru
-     * Request: POST /categories
-     * Body: { user_id, name }
-     * Response: { id } (category_id yang baru dibuat)
-     */
     public function addCategory() {
         // 1. EXTRACT DATA
         $userId = isset($_POST['user_id']) ? (int)$_POST['user_id'] : null;
@@ -93,13 +72,6 @@ class CategoryController {
         Response::success($responseData, "Kategori berhasil ditambahkan");
     }
     
-    /**
-     * Method: editCategory()
-     * Fungsi: Update kategori
-     * Request: PUT /categories/{id}
-     * Body: { user_id, name }
-     * Response: success message
-     */
     public function editCategory($id) {
         // 1. EXTRACT DATA
         $id = (int)$id;
@@ -154,13 +126,6 @@ class CategoryController {
         Response::success(null, "Kategori berhasil diperbarui");
     }
     
-    /**
-     * Method: deleteCategory()
-     * Fungsi: Delete kategori
-     * Request: DELETE /categories/{id}
-     * Body: { user_id }
-     * Response: success message
-     */
     public function deleteCategory($id) {
         // 1. EXTRACT DATA
         $id = (int)$id;

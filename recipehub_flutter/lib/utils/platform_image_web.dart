@@ -1,7 +1,4 @@
 // utils/platform_image_web.dart
-// Web implementation: uses XFile.readAsBytes() and Image.memory
-// This file is exported only on web via utils/platform_image.dart conditional export.
-
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

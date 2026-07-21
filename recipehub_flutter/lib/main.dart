@@ -1,11 +1,4 @@
 // main.dart
-/**
- * File: main.dart
- * Fungsi: Entry point aplikasi dengan routing dan theme configuration
- * 
- * FIXED: Tambah category routes (/categories/add dan /categories/edit)
- */
-
 import 'package:flutter/material.dart';
 import 'screens/auth/splash_screen.dart';
 import 'screens/auth/login_screen.dart';
@@ -33,14 +26,13 @@ class MyApp extends StatelessWidget {
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,
 
-      // ============================================================
       // THEME CONFIGURATION
-      // ============================================================
+
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: Color(AppColors.primaryColor),
         scaffoldBackgroundColor: Color(AppColors.backgroundColor),
-        
+
         // AppBar Theme
         appBarTheme: AppBarTheme(
           backgroundColor: Color(AppColors.primaryColor),
@@ -232,9 +224,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // ============================================================
       // NAVIGATION ROUTES
-      // ============================================================
+
       home: const SplashScreen(),
       routes: {
         '/splash': (context) => const SplashScreen(),
@@ -247,9 +238,8 @@ class MyApp extends StatelessWidget {
         '/categories/add': (context) => const CategoryFormScreen(),
       },
 
-      // ============================================================
       // DYNAMIC ROUTE GENERATION
-      // ============================================================
+
       onGenerateRoute: (settings) {
         try {
           // Recipe Detail Route
@@ -318,9 +308,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ============================================================
 // ERROR SCREEN WIDGET
-// ============================================================
+
 class ErrorScreen extends StatelessWidget {
   final String error;
 

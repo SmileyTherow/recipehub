@@ -1,9 +1,4 @@
 // models/user.dart
-/**
- * File: models/user.dart
- * Fungsi: Model class untuk User
- */
-
 class User {
   final int id;
   final String name;
@@ -15,22 +10,7 @@ class User {
     required this.email,
   });
 
-  // ============================================================
   // FROM JSON - Convert response dari backend ke User object
-  // ============================================================
-  /**
-   * Method: fromJson()
-   * Fungsi: Convert JSON response dari backend ke User object
-   * Parameter: json (Map<String, dynamic>)
-   * Return: User object
-   * 
-   * Contoh response dari backend:
-   * {
-   *   "user_id": 1,
-   *   "name": "Sarah",
-   *   "email": "sarah@email.com"
-   * }
-   */
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['user_id'] ?? 0,
@@ -39,9 +19,7 @@ class User {
     );
   }
 
-  // ============================================================
   // TO JSON - Convert User object ke JSON (jika diperlukan)
-  // ============================================================
   Map<String, dynamic> toJson() {
     return {
       'user_id': id,
@@ -50,9 +28,7 @@ class User {
     };
   }
 
-  // ============================================================
   // COPY WITH - Create copy dengan beberapa field yang diubah
-  // ============================================================
   User copyWith({
     int? id,
     String? name,

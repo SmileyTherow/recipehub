@@ -1,9 +1,4 @@
 // models/recipe.dart
-// models/recipe.dart
-/**
- * File: models/recipe.dart
- * Fungsi: Model class untuk Recipe
- */
 import '../config/api_config.dart';
 
 class Recipe {
@@ -35,9 +30,8 @@ class Recipe {
     this.updatedAt,
   });
 
-  // ============================================================
   // FROM JSON - Convert response dari backend ke Recipe object
-  // ============================================================
+
   /**
    * Method: fromJson()
    * Fungsi: Convert JSON response dari backend ke Recipe object
@@ -56,8 +50,7 @@ class Recipe {
       cookingTime: json['cooking_time'] ?? 0,
       servings: json['servings'] ?? 0,
       description: json['description'],
-      image: json['image'] != null &&
-              json['image'].toString().isNotEmpty
+      image: json['image'] != null && json['image'].toString().isNotEmpty
           ? ApiConfig.recipeImageUrl(json['image'].toString())
           : null,
       createdAt: json['created_at'],
@@ -65,9 +58,8 @@ class Recipe {
     );
   }
 
-  // ============================================================
   // TO JSON - Convert Recipe object ke JSON
-  // ============================================================
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -85,9 +77,8 @@ class Recipe {
     };
   }
 
-  // ============================================================
   // COPY WITH - Create copy dengan beberapa field yang diubah
-  // ============================================================
+
   Recipe copyWith({
     int? id,
     int? userId,

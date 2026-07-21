@@ -1,9 +1,4 @@
 <?php
-/**
- * File: models/Recipe.php
- * Fungsi: Model untuk query recipe dari database
- */
-
 class Recipe {
     
     private $db;
@@ -11,13 +6,7 @@ class Recipe {
     public function __construct() {
         $this->db = new Database();
     }
-    
-    /**
-     * Method: getByUserId()
-     * Fungsi: Ambil semua resep milik satu user
-     * Parameter: $userId (integer)
-     * Return: array of recipes
-     */
+
     public function getByUserId($userId) {
         $stmt = $this->db->prepare("
             SELECT id, name, category_id, cooking_time, servings, image, description 
@@ -38,13 +27,7 @@ class Recipe {
         $stmt->close();
         return $recipes;
     }
-    
-    /**
-     * Method: getById()
-     * Fungsi: Ambil detail resep berdasarkan ID
-     * Parameter: $id (integer)
-     * Return: array (recipe data) atau null
-     */
+
     public function getById($id) {
         $stmt = $this->db->prepare("
             SELECT * FROM recipes WHERE id = ?
@@ -59,12 +42,6 @@ class Recipe {
         return $recipe;
     }
     
-    /**
-     * Method: getLatest()
-     * Fungsi: Ambil N resep terbaru milik satu user
-     * Parameter: $userId, $limit (berapa resep yang diambil)
-     * Return: array of recipes
-     */
     public function getLatest($userId, $limit = 5) {
         $stmt = $this->db->prepare("
             SELECT id, name, category_id, cooking_time, servings, image, description 
@@ -87,12 +64,6 @@ class Recipe {
         return $recipes;
     }
     
-    /**
-     * Method: create()
-     * Fungsi: Buat resep baru
-     * Parameter: $data (array dengan keys: user_id, category_id, name, ingredients, steps, cooking_time, servings, image, description)
-     * Return: integer (recipe_id) atau false
-     */
     public function create($data) {
         $stmt = $this->db->prepare("
             INSERT INTO recipes 
@@ -125,12 +96,6 @@ class Recipe {
         return false;
     }
     
-    /**
-     * Method: update()
-     * Fungsi: Update resep yang sudah ada
-     * Parameter: $id (recipe_id), $data (array dengan field yang akan diupdate)
-     * Return: boolean
-     */
     public function update($id, $data) {
         // Build dynamic query berdasarkan field yang ada di $data
         $fields = [];
@@ -195,12 +160,6 @@ class Recipe {
         return $result;
     }
     
-    /**
-     * Method: delete()
-     * Fungsi: Hapus resep
-     * Parameter: $id (recipe_id)
-     * Return: boolean
-     */
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM recipes WHERE id = ?");
         $stmt->bind_param("i", $id);
@@ -210,12 +169,6 @@ class Recipe {
         return $result;
     }
     
-    /**
-     * Method: countByUserId()
-     * Fungsi: Hitung total resep milik satu user
-     * Parameter: $userId (integer)
-     * Return: integer (jumlah resep)
-     */
     public function countByUserId($userId) {
         $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM recipes WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
@@ -227,12 +180,6 @@ class Recipe {
         return (int)$row['total'];
     }
 
-    /**
-     * Method: countByCategory()
-     * Fungsi: Hitung total resep dalam satu kategori
-     * Parameter: $categoryId (integer)
-     * Return: integer (jumlah resep)
-     */
     public function countByCategory($categoryId) {
         $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM recipes WHERE category_id = ?");
         $stmt->bind_param("i", $categoryId);

@@ -1,9 +1,4 @@
 <?php
-/**
- * File: controllers/recipes/RecipeController.php
- * Fungsi: Handle CRUD operations untuk recipe (resep)
- */
-
 class RecipeController {
     
     private $recipe;
@@ -13,12 +8,6 @@ class RecipeController {
         $this->recipe = new Recipe();
         $this->category = new Category();
     }
-    
-    /**
-     * Method: getRecipes()
-     * Endpoint: GET /recipes?user_id=1
-     * Fungsi: Ambil daftar resep user
-     */
     public function getRecipes() {
         $userId = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
         
@@ -30,11 +19,6 @@ class RecipeController {
         Response::success($recipes, "Resep loaded");
     }
     
-    /**
-     * Method: getRecipeDetail()
-     * Endpoint: GET /recipes/{id}?user_id=1
-     * Fungsi: Ambil detail lengkap satu resep
-     */
     public function getRecipeDetail($recipeId) {
         $recipeId = (int)$recipeId;
         $userId = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
@@ -56,11 +40,6 @@ class RecipeController {
         Response::success($recipe, "Resep detail loaded");
     }
     
-    /**
-     * Method: addRecipe()
-     * Endpoint: POST /recipes
-     * Fungsi: Tambah resep baru
-     */
     public function addRecipe() {
         $userId = isset($_POST['user_id']) ? (int)$_POST['user_id'] : null;
         $categoryId = isset($_POST['category_id']) ? (int)$_POST['category_id'] : null;
@@ -158,15 +137,6 @@ class RecipeController {
         Response::success($responseData, "Resep berhasil ditambahkan");
     }
     
-    /**
-     * Method: editRecipe()
-     * Endpoint: PUT /recipes/{id}
-     * Fungsi: Edit resep yang sudah ada
-     *
-     * Supports:
-     * - Actual PUT requests (read from php://input)
-     * - POST requests with override _method=PUT (multipart/form-data) so file uploads are supported
-     */
     public function editRecipe($recipeId) {
         $recipeId = (int)$recipeId;
 
@@ -320,11 +290,6 @@ class RecipeController {
         Response::success(null, "Resep berhasil diperbarui");
     }
     
-    /**
-     * Method: deleteRecipe()
-     * Endpoint: DELETE /recipes/{id}
-     * Fungsi: Hapus resep beserta gambarnya
-     */
     public function deleteRecipe($recipeId) {
         $recipeId = (int)$recipeId;
         

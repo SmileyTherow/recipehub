@@ -1,37 +1,14 @@
 <?php
-
-/**
- * File: controllers/auth/AuthController.php
- * Fungsi: Handle authentication (register & login)
- */
-
 class AuthController
 {
-
-    // Property untuk User model
     private $user;
-
-    /**
-     * Constructor
-     * Fungsi: Inisialisasi User model
-     */
     public function __construct()
     {
         $this->user = new User();
     }
-
-    /**
-     * Method: register()
-     * Fungsi: Handle user registration
-     * Request: POST /auth/register
-     * Body: { name, email, password }
-     * Response: success atau error
-     */
     public function register()
     {
         // 1. EXTRACT DATA DARI REQUEST
-        // isset() = cek apakah key ada
-        // trim() = hapus whitespace di awal & akhir
         $name = isset($_POST['name']) ? trim($_POST['name']) : null;
         $email = isset($_POST['email']) ? trim($_POST['email']) : null;
         $password = isset($_POST['password']) ? $_POST['password'] : null;
@@ -80,13 +57,6 @@ class AuthController
         Response::success(null, "Registrasi berhasil. Silakan login");
     }
 
-    /**
-     * Method: login()
-     * Fungsi: Handle user login
-     * Request: POST /auth/login
-     * Body: { email, password }
-     * Response: { user_id, name, email } atau error
-     */
     public function login()
     {
         // 1. EXTRACT DATA DARI REQUEST

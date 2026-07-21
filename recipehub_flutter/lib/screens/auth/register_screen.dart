@@ -1,16 +1,4 @@
 // screens/auth/register_screen.dart
-/**
- * File: screens/auth/register_screen.dart
- * Fungsi: Register Screen - untuk membuat akun baru
- * 
- * Alur:
- * 1. User input nama, email, password, konfirmasi password
- * 2. Validasi input
- * 3. Kirim request ke backend melalui AuthService
- * 4. Jika berhasil → tampilkan success message & navigasi ke Login
- * 5. Jika gagal → tampilkan error message
- */
-
 import 'package:flutter/material.dart';
 import '../../services/auth_service.dart';
 import '../../utils/validators.dart';
@@ -24,9 +12,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  // ============================================================
   // CONTROLLER & STATE
-  // ============================================================
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -46,17 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  // ============================================================
   // HANDLE REGISTER
-  // ============================================================
-  /**
-   * Method: _handleRegister()
-   * Fungsi:
-   * 1. Validasi form
-   * 2. Set loading state
-   * 3. Kirim request ke backend
-   * 4. Handle response (success atau error)
-   */
   Future<void> _handleRegister() async {
     // 1. Validasi form
     if (!_formKey.currentState!.validate()) {
@@ -137,9 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ============================================================
               // HEADER
-              // ============================================================
               Text(
                 'Buat Akun Baru',
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
@@ -157,9 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
               SizedBox(height: 30),
 
-              // ============================================================
               // FORM
-              // ============================================================
               Form(
                 key: _formKey,
                 child: Column(
@@ -300,9 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
               SizedBox(height: 24),
 
-              // ============================================================
               // LINK KE LOGIN
-              // ============================================================
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

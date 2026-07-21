@@ -1,9 +1,4 @@
 <?php
-/**
- * File: helpers/FileUpload.php
- * Fungsi: Helper untuk upload & delete file gambar
- */
-
 class FileUpload {
     
     // Konstanta konfigurasi file upload
@@ -19,13 +14,6 @@ class FileUpload {
     ];
     const ALLOWED_EXT = ['jpg', 'jpeg', 'png', 'gif'];
     
-    /**
-     * Method: uploadImage()
-     * Fungsi: Upload file gambar dengan validasi
-     * Parameter:
-     *   - $file (array): array dari $_FILES['image']
-     * Return: string (nama file) atau false jika gagal
-     */
     public static function uploadImage($file) {
         // Debug logging: log incoming file array
         error_log("[FileUpload] uploadImage called. \$_FILES['image']=" . print_r($file, true));
@@ -44,8 +32,6 @@ class FileUpload {
                 400
             );
         }
-        
-        
         
         // Validasi 4: Cek extension file
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -82,13 +68,6 @@ class FileUpload {
         );
     }
     
-    /**
-     * Method: deleteFile()
-     * Fungsi: Hapus file dari server
-     * Parameter:
-     *   - $fileName (string): nama file yang akan dihapus
-     * Return: boolean (true jika berhasil, false jika gagal)
-     */
     public static function deleteFile($fileName) {
         // Tentukan path file
         $filePath = self::UPLOAD_DIR . $fileName;
@@ -101,15 +80,6 @@ class FileUpload {
         return false;  // File tidak ada
     }
     
-    /**
-     * Method: generateFileName()
-     * Fungsi: Generate nama file yang unik & aman
-     * Parameter:
-     *   - $ext (string): extension file (jpg, png, dll)
-     * Return: string (nama file unik)
-     * 
-     * Contoh output: 1704067200_5432.jpg
-     */
     private static function generateFileName($ext) {
         // Kombinasi timestamp (detik saat ini) + random number
         $timestamp = time();            // Contoh: 1704067200

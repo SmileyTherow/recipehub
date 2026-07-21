@@ -1,16 +1,4 @@
 // screens/recipes/recipe_list_screen.dart
-/**
- * File: screens/recipes/recipe_list_screen.dart
- * Fungsi: Menampilkan daftar semua resep user dengan fitur search & filter
- * 
- * TASK 5 Improvements:
- * ✅ Add Recipe navigation bekerja sempurna
- * ✅ Refresh otomatis setelah Add/Edit/Delete
- * ✅ Better error handling
- * ✅ SnackBar untuk feedback
- * ✅ Loading states
- */
-
 import 'package:flutter/material.dart';
 import '../../services/recipe_service.dart';
 import '../../services/category_service.dart';
@@ -27,9 +15,7 @@ class RecipeListScreen extends StatefulWidget {
 }
 
 class _RecipeListScreenState extends State<RecipeListScreen> {
-  // ============================================================
   // STATE VARIABLES
-  // ============================================================
   int? _userId;
   List<Recipe> _allRecipes = [];
   List<Recipe> _filteredRecipes = [];
@@ -56,13 +42,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     super.dispose();
   }
 
-  // ============================================================
   // LOAD DATA
-  // ============================================================
-  /**
-   * Method: _loadData()
-   * Fungsi: Load user_id dan ambil data recipes & categories
-   */
   Future<void> _loadData() async {
     try {
       final localStorage = LocalStorage();
@@ -90,13 +70,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     }
   }
 
-  // ============================================================
   // LOAD RECIPES
-  // ============================================================
-  /**
-   * Method: _loadRecipes()
-   * Fungsi: Ambil daftar resep dari backend
-   */
   Future<void> _loadRecipes() async {
     try {
       if (_userId == null) return;
@@ -106,9 +80,9 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
       if (response['success'] == true) {
         setState(() {
           _allRecipes = response['recipes'] ?? [];
-            for (var r in _allRecipes) {
-              debugPrint("LIST IMAGE : ${r.image}");
-            }
+          for (var r in _allRecipes) {
+            debugPrint("LIST IMAGE : ${r.image}");
+          }
           _errorMessage = null;
         });
 
@@ -131,13 +105,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     }
   }
 
-  // ============================================================
   // LOAD CATEGORIES
-  // ============================================================
-  /**
-   * Method: _loadCategories()
-   * Fungsi: Ambil daftar kategori untuk dropdown filter
-   */
   Future<void> _loadCategories() async {
     try {
       if (_userId == null) return;
@@ -158,13 +126,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     }
   }
 
-  // ============================================================
   // APPLY SEARCH & FILTER
-  // ============================================================
-  /**
-   * Method: _applySearchAndFilter()
-   * Fungsi: Terapkan search dan filter ke resep
-   */
   void _applySearchAndFilter() {
     final query = _searchController.text;
     final categoryId = _selectedCategoryId;
@@ -178,24 +140,12 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     });
   }
 
-  // ============================================================
   // HANDLE SEARCH INPUT
-  // ============================================================
-  /**
-   * Method: _onSearchChanged()
-   * Fungsi: Dipanggil saat user mengetik di search box
-   */
   void _onSearchChanged(String value) {
     _applySearchAndFilter();
   }
 
-  // ============================================================
   // HANDLE CATEGORY FILTER
-  // ============================================================
-  /**
-   * Method: _onCategoryChanged()
-   * Fungsi: Dipanggil saat user mengubah kategori filter
-   */
   void _onCategoryChanged(int? categoryId) {
     setState(() {
       _selectedCategoryId = categoryId;
@@ -203,25 +153,13 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     _applySearchAndFilter();
   }
 
-  // ============================================================
   // CLEAR SEARCH
-  // ============================================================
-  /**
-   * Method: _clearSearch()
-   * Fungsi: Hapus text di search box
-   */
   void _clearSearch() {
     _searchController.clear();
     _applySearchAndFilter();
   }
 
-  // ============================================================
   // CLEAR ALL FILTERS
-  // ============================================================
-  /**
-   * Method: _clearAllFilters()
-   * Fungsi: Reset search dan kategori filter
-   */
   void _clearAllFilters() {
     setState(() {
       _searchController.clear();
@@ -230,13 +168,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     _applySearchAndFilter();
   }
 
-  // ============================================================
   // ADD RECIPE NAVIGATION
-  // ============================================================
-  /**
-   * Method: _handleAddRecipe()
-   * Fungsi: Navigate ke add recipe form
-   */
   Future<void> _handleAddRecipe() async {
     try {
       final result = await Navigator.pushNamed(context, '/recipes/add');
@@ -271,13 +203,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE NAVIGATION
-  // ============================================================
-  /**
-   * Method: _handleNavigation()
-   * Fungsi: Handle bottom navigation bar tap
-   */
   void _handleNavigation(int index) {
     setState(() {
       _currentNavIndex = index;
@@ -302,13 +228,7 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     }
   }
 
-  // ============================================================
   // LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
@@ -348,9 +268,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
                   color: Color(AppColors.primaryColor),
                   child: Column(
                     children: [
-                      // ============================================================
                       // SEARCH BAR
-                      // ============================================================
+
                       Padding(
                         padding: EdgeInsets.all(16),
                         child: TextField(
@@ -369,9 +288,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
                         ),
                       ),
 
-                      // ============================================================
                       // CATEGORY FILTER DROPDOWN
-                      // ============================================================
+
                       if (_categories.isNotEmpty)
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -444,9 +362,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
 
                       SizedBox(height: 16),
 
-                      // ============================================================
                       // FILTER STATUS INDICATOR
-                      // ============================================================
+
                       if (_searchController.text.isNotEmpty ||
                           _selectedCategoryId != null)
                         Padding(
@@ -488,9 +405,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
 
                       SizedBox(height: 12),
 
-                      // ============================================================
                       // RECIPE LIST
-                      // ============================================================
+
                       Expanded(
                         child: _filteredRecipes.isEmpty
                             ? _buildEmptyState()
@@ -502,7 +418,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
                                   return GestureDetector(
                                     onTap: () async {
                                       try {
-                                        final result = await Navigator.pushNamed(
+                                        final result =
+                                            await Navigator.pushNamed(
                                           context,
                                           '/recipes/detail',
                                           arguments: recipe.id,
@@ -525,8 +442,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
                                                   'Error membuka detail: ${e.toString()}'),
                                               backgroundColor:
                                                   Color(AppColors.errorColor),
-                                              duration: AppConstants
-                                                  .snackBarDuration,
+                                              duration:
+                                                  AppConstants.snackBarDuration,
                                             ),
                                           );
                                         }
@@ -579,9 +496,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     );
   }
 
-  // ============================================================
   // LOADING STATE
-  // ============================================================
+
   Widget _buildLoadingState() {
     return Center(
       child: Column(
@@ -606,9 +522,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     );
   }
 
-  // ============================================================
   // EMPTY STATE
-  // ============================================================
+
   Widget _buildEmptyState() {
     final hasActiveFilters =
         _searchController.text.isNotEmpty || _selectedCategoryId != null;
@@ -667,9 +582,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
     );
   }
 
-  // ============================================================
   // ERROR STATE
-  // ============================================================
+
   Widget _buildErrorState() {
     return Center(
       child: SingleChildScrollView(
@@ -715,9 +629,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
   }
 }
 
-// ============================================================
 // RECIPE CARD WIDGET
-// ============================================================
+
 class _RecipeCard extends StatelessWidget {
   final Recipe recipe;
 

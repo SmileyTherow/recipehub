@@ -1,16 +1,4 @@
 // screens/auth/login_screen.dart
-/**
- * File: screens/auth/login_screen.dart
- * Fungsi: Login Screen - untuk autentikasi user dengan email & password
- * 
- * Alur:
- * 1. User input email & password
- * 2. Validasi input
- * 3. Kirim request ke backend melalui AuthService
- * 4. Jika berhasil → simpan user data ke local storage & navigasi ke Dashboard
- * 5. Jika gagal → tampilkan error message
- */
-
 import 'package:flutter/material.dart';
 import '../../services/auth_service.dart';
 import '../../utils/local_storage.dart';
@@ -25,9 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // ============================================================
   // CONTROLLER & STATE
-  // ============================================================
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -42,17 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // ============================================================
   // HANDLE LOGIN
-  // ============================================================
-  /**
-   * Method: _handleLogin()
-   * Fungsi:
-   * 1. Validasi form
-   * 2. Set loading state
-   * 3. Kirim request ke backend
-   * 4. Handle response (success atau error)
-   */
   Future<void> _handleLogin() async {
     // 1. Validasi form
     if (!_formKey.currentState!.validate()) {
@@ -136,9 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ============================================================
               // HEADER
-              // ============================================================
               SizedBox(height: 40),
               Text(
                 'Masuk ke Akun Anda',
@@ -157,9 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 40),
 
-              // ============================================================
               // FORM
-              // ============================================================
               Form(
                 key: _formKey,
                 child: Column(
@@ -250,9 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 24),
 
-              // ============================================================
               // LINK KE REGISTER
-              // ============================================================
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -1,17 +1,4 @@
 // screens/recipes/recipe_detail_screen.dart
-/**
- * File: screens/recipes/recipe_detail_screen.dart
- * Fungsi: Menampilkan detail lengkap satu resep dengan opsi edit & delete
- * 
- * TASK 5 Improvements:
- * ✅ Edit button bekerja dengan sempurna
- * ✅ Delete dengan confirmation yang jelas
- * ✅ Auto refresh setelah edit
- * ✅ Back navigation yang smooth
- * ✅ SnackBar sukses dan gagal
- * ✅ Loading states
- */
-
 import 'package:flutter/material.dart';
 import '../../services/recipe_service.dart';
 import '../../services/category_service.dart';
@@ -33,9 +20,7 @@ class RecipeDetailScreen extends StatefulWidget {
 }
 
 class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
-  // ============================================================
   // STATE VARIABLES
-  // ============================================================
   int? _userId;
   Recipe? _recipe;
   Category? _category;
@@ -50,13 +35,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     _loadData();
   }
 
-  // ============================================================
   // LOAD DATA
-  // ============================================================
-  /**
-   * Method: _loadData()
-   * Fungsi: Load user_id dan ambil data recipe detail
-   */
   Future<void> _loadData() async {
     try {
       final localStorage = LocalStorage();
@@ -80,13 +59,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
   }
 
-  // ============================================================
   // LOAD RECIPE DETAIL
-  // ============================================================
-  /**
-   * Method: _loadRecipeDetail()
-   * Fungsi: Ambil detail resep dari backend
-   */
   Future<void> _loadRecipeDetail() async {
     try {
       if (_userId == null) return;
@@ -125,13 +98,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
   }
 
-  // ============================================================
   // LOAD CATEGORY
-  // ============================================================
-  /**
-   * Method: _loadCategory()
-   * Fungsi: Ambil nama kategori berdasarkan category ID
-   */
   Future<void> _loadCategory(int categoryId) async {
     try {
       if (_userId == null) return;
@@ -166,13 +133,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE EDIT
-  // ============================================================
-  /**
-   * Method: _handleEdit()
-   * Fungsi: Navigate ke edit screen dengan recipe data
-   */
   Future<void> _handleEdit() async {
     if (_recipe == null) return;
 
@@ -216,13 +177,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE DELETE
-  // ============================================================
-  /**
-   * Method: _handleDelete()
-   * Fungsi: Show delete confirmation dialog
-   */
   void _handleDelete() {
     showDialog(
       context: context,
@@ -277,13 +232,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     );
   }
 
-  // ============================================================
   // DELETE RECIPE
-  // ============================================================
-  /**
-   * Method: _deleteRecipe()
-   * Fungsi: Delete resep dari backend
-   */
   Future<void> _deleteRecipe() async {
     try {
       if (_userId == null || _recipe == null) return;
@@ -343,13 +292,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
   }
 
-  // ============================================================
   // HANDLE LOGOUT
-  // ============================================================
-  /**
-   * Method: _logout()
-   * Fungsi: Logout user
-   */
   Future<void> _logout() async {
     final localStorage = LocalStorage();
     await localStorage.logout();
@@ -404,9 +347,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // ============================================================
                               // RECIPE IMAGE
-                              // ============================================================
                               Container(
                                 width: double.infinity,
                                 height: 250,
@@ -424,15 +365,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                 child: _recipe!.image != null &&
                                         _recipe!.image!.isNotEmpty
                                     ? ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(12),
                                         child: Image.network(
                                           _recipe!.image!,
                                           fit: BoxFit.cover,
                                           errorBuilder:
                                               (context, error, stackTrace) {
-                                                print("ERROR IMAGE : $error");
-    print("URL : ${_recipe!.image}");
+                                            print("ERROR IMAGE : $error");
+                                            print("URL : ${_recipe!.image}");
                                             return Container(
                                               color: Color(
                                                   AppColors.backgroundColor),
@@ -449,8 +389,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                             if (loadingProgress == null)
                                               return child;
                                             return Center(
-                                              child:
-                                                  CircularProgressIndicator(
+                                              child: CircularProgressIndicator(
                                                 value: loadingProgress
                                                             .expectedTotalBytes !=
                                                         null
@@ -470,14 +409,13 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                         ),
                                       )
                                     : Container(
-                                        color: Color(
-                                            AppColors.backgroundColor),
+                                        color: Color(AppColors.backgroundColor),
                                         child: Center(
                                           child: Icon(
                                             Icons.restaurant_menu_rounded,
                                             size: 100,
-                                            color: Color(
-                                                AppColors.primaryColor),
+                                            color:
+                                                Color(AppColors.primaryColor),
                                           ),
                                         ),
                                       ),
@@ -485,9 +423,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 20),
 
-                              // ============================================================
                               // RECIPE NAME
-                              // ============================================================
+
                               Text(
                                 _recipe!.name,
                                 style: Theme.of(context)
@@ -501,9 +438,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 8),
 
-                              // ============================================================
                               // CATEGORY NAME
-                              // ============================================================
+
                               if (_category != null)
                                 Container(
                                   padding: EdgeInsets.symmetric(
@@ -539,9 +475,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 20),
 
-                              // ============================================================
                               // COOKING INFO (Time & Servings)
-                              // ============================================================
+
                               Row(
                                 children: [
                                   // Cooking Time
@@ -554,15 +489,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                       decoration: BoxDecoration(
                                         color: Color(AppColors.primaryColor)
                                             .withOpacity(0.1),
-                                        borderRadius:
-                                            BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Column(
                                         children: [
                                           Icon(
                                             Icons.access_time,
-                                            color: Color(
-                                                AppColors.primaryColor),
+                                            color:
+                                                Color(AppColors.primaryColor),
                                             size: 28,
                                           ),
                                           SizedBox(height: 8),
@@ -572,10 +506,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                                 .textTheme
                                                 .bodyLarge
                                                 ?.copyWith(
-                                                  color: Color(AppColors
-                                                      .textPrimary),
-                                                  fontWeight:
-                                                      FontWeight.bold,
+                                                  color: Color(
+                                                      AppColors.textPrimary),
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                           ),
                                           SizedBox(height: 4),
@@ -585,8 +518,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                                 .textTheme
                                                 .bodySmall
                                                 ?.copyWith(
-                                                  color: Color(AppColors
-                                                      .textSecondary),
+                                                  color: Color(
+                                                      AppColors.textSecondary),
                                                 ),
                                           ),
                                         ],
@@ -604,15 +537,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                       decoration: BoxDecoration(
                                         color: Color(AppColors.secondaryColor)
                                             .withOpacity(0.1),
-                                        borderRadius:
-                                            BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Column(
                                         children: [
                                           Icon(
                                             Icons.restaurant_menu_rounded,
-                                            color: Color(
-                                                AppColors.secondaryColor),
+                                            color:
+                                                Color(AppColors.secondaryColor),
                                             size: 28,
                                           ),
                                           SizedBox(height: 8),
@@ -622,10 +554,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                                 .textTheme
                                                 .bodyLarge
                                                 ?.copyWith(
-                                                  color: Color(AppColors
-                                                      .textPrimary),
-                                                  fontWeight:
-                                                      FontWeight.bold,
+                                                  color: Color(
+                                                      AppColors.textPrimary),
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                           ),
                                           SizedBox(height: 4),
@@ -635,8 +566,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                                 .textTheme
                                                 .bodySmall
                                                 ?.copyWith(
-                                                  color: Color(AppColors
-                                                      .textSecondary),
+                                                  color: Color(
+                                                      AppColors.textSecondary),
                                                 ),
                                           ),
                                         ],
@@ -648,9 +579,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 32),
 
-                              // ============================================================
                               // DESCRIPTION SECTION
-                              // ============================================================
                               if (_recipe!.description != null &&
                                   _recipe!.description!.trim().isNotEmpty) ...[
                                 Text(
@@ -663,9 +592,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                         color: Color(AppColors.textPrimary),
                                       ),
                                 ),
-
                                 SizedBox(height: 12),
-
                                 Container(
                                   width: double.infinity,
                                   padding: EdgeInsets.all(16),
@@ -687,13 +614,10 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                         ),
                                   ),
                                 ),
-
                                 SizedBox(height: 32),
                               ],
 
-                              // ============================================================
                               // INGREDIENTS SECTION
-                              // ============================================================
                               Text(
                                 'Bahan-Bahan',
                                 style: Theme.of(context)
@@ -731,9 +655,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 32),
 
-                              // ============================================================
                               // STEPS SECTION
-                              // ============================================================
                               Text(
                                 'Langkah-Langkah',
                                 style: Theme.of(context)
@@ -771,9 +693,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
                               SizedBox(height: 40),
 
-                              // ============================================================
                               // INFO TIMESTAMPS
-                              // ============================================================
                               if (_recipe!.createdAt != null ||
                                   _recipe!.updatedAt != null)
                                 Container(
@@ -793,8 +713,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                               .textTheme
                                               .bodySmall
                                               ?.copyWith(
-                                                color: Color(AppColors
-                                                    .textSecondary),
+                                                color: Color(
+                                                    AppColors.textSecondary),
                                               ),
                                         ),
                                       if (_recipe!.updatedAt != null)
@@ -806,8 +726,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                               .textTheme
                                               .bodySmall
                                               ?.copyWith(
-                                                color: Color(AppColors
-                                                    .textSecondary),
+                                                color: Color(
+                                                    AppColors.textSecondary),
                                               ),
                                         ),
                                     ],
@@ -842,9 +762,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     );
   }
 
-  // ============================================================
   // LOADING STATE
-  // ============================================================
   Widget _buildLoadingState() {
     return Center(
       child: Column(
@@ -869,9 +787,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     );
   }
 
-  // ============================================================
   // ERROR STATE
-  // ============================================================
   Widget _buildErrorState() {
     return Center(
       child: SingleChildScrollView(
@@ -918,9 +834,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     );
   }
 
-  // ============================================================
   // EMPTY STATE
-  // ============================================================
   Widget _buildEmptyState() {
     return Center(
       child: Column(

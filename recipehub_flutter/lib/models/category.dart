@@ -1,9 +1,4 @@
 // models/category.dart
-/**
- * File: models/category.dart
- * Fungsi: Model class untuk Category
- */
-
 class Category {
   final int id;
   final int userId;
@@ -19,15 +14,7 @@ class Category {
     this.updatedAt,
   });
 
-  // ============================================================
   // FROM JSON - Convert response dari backend ke Category object
-  // ============================================================
-  /**
-   * Method: fromJson()
-   * Fungsi: Convert JSON response dari backend ke Category object
-   * Parameter: json (Map<String, dynamic>)
-   * Return: Category object
-   */
   factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
       id: json['id'] ?? 0,
@@ -38,9 +25,7 @@ class Category {
     );
   }
 
-  // ============================================================
   // TO JSON - Convert Category object ke JSON
-  // ============================================================
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -51,9 +36,7 @@ class Category {
     };
   }
 
-  // ============================================================
   // COPY WITH - Create copy dengan beberapa field yang diubah
-  // ============================================================
   Category copyWith({
     int? id,
     int? userId,
