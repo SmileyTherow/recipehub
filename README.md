@@ -131,83 +131,123 @@ Berikut daftar endpoint utama yang digunakan pada aplikasi RecipeHub.
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-### 🔐 Login
-
-![Login](images/login.jpeg)
-
----
-
-### 📝 Register
-
-![Register](images/register.jpeg)
+Berikut adalah tampilan antarmuka aplikasi **RecipeHub**.  
+Screenshot dikelompokkan berdasarkan fitur agar dokumentasi tetap ringkas dan mudah dinavigasi.
 
 ---
 
-### 🏠 Dashboard
+<details>
+<summary>🔐 Authentication</summary>
 
-![Dashboard](images/dashboard.jpeg)
+### Login
 
----
+<p align="center">
+  <img src="images/login.jpeg" width="300">
+</p>
 
-### 🍽️ Daftar Resep
+### Register
 
-![Daftar Resep](images/daftar-resep.jpeg)
+<p align="center">
+  <img src="images/register.jpeg" width="300">
+</p>
 
----
-
-### ➕ Tambah Resep
-
-![Tambah Resep](images/tambah-resep.jpeg)
-
----
-
-### 📖 Detail Resep
-
-![Detail Resep](images/detail-resep.jpeg)
+</details>
 
 ---
 
-### ✏️ Edit Resep
+<details>
+<summary>🏠 Dashboard</summary>
 
-![Edit Resep](images/edit-resep.jpeg)
+### Dashboard
 
----
+<p align="center">
+  <img src="images/dashboard.jpeg" width="300">
+</p>
 
-### 🗑️ Hapus Resep
-
-![Hapus Resep](images/hapus-resep.jpeg)
-
----
-
-### 📂 Daftar Kategori
-
-![Daftar Kategori](images/daftar-kategori.jpeg)
+</details>
 
 ---
 
-### ➕ Tambah Kategori
+<details>
+<summary>🍽️ Recipe Management</summary>
 
-![Tambah Kategori](images/tambah-kategori.jpeg)
+### Daftar Resep
+
+<p align="center">
+  <img src="images/daftar-resep.jpeg" width="300">
+</p>
+
+### Tambah Resep
+
+<p align="center">
+  <img src="images/tambah-resep.jpeg" width="300">
+</p>
+
+### Detail Resep
+
+<p align="center">
+  <img src="images/detail-resep.jpeg" width="300">
+</p>
+
+### Edit Resep
+
+<p align="center">
+  <img src="images/edit-resep.jpeg" width="300">
+</p>
+
+### Hapus Resep
+
+<p align="center">
+  <img src="images/hapus-resep.jpeg" width="300">
+</p>
+
+</details>
 
 ---
 
-### ✏️ Edit Kategori
+<details>
+<summary>📂 Category Management</summary>
 
-![Edit Kategori](images/edit-kategori.jpeg)
+### Daftar Kategori
+
+<p align="center">
+  <img src="images/daftar-kategori.jpeg" width="300">
+</p>
+
+### Tambah Kategori
+
+<p align="center">
+  <img src="images/tambah-kategori.jpeg" width="300">
+</p>
+
+### Edit Kategori
+
+<p align="center">
+  <img src="images/edit-kategori.jpeg" width="300">
+</p>
+
+### Hapus Kategori
+
+<p align="center">
+  <img src="images/hapus-kategori.jpeg" width="300">
+</p>
+
+</details>
 
 ---
 
-### 🗑️ Hapus Kategori
+<details>
+<summary>🚪 Session & Logout</summary>
 
-![Hapus Kategori](images/hapus-kategori.jpeg)
+### Logout
 
----
+<p align="center">
+  <img src="images/logout.jpeg" width="300">
+</p>
 
-### 🚪 Logout
-
-![Logout](images/logout.jpeg)
+</details>
 
 ---
 
