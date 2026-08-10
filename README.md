@@ -1,4 +1,14 @@
-# 🍲 RecipeHub - Sistem Informasi Resep Digital
+<div align="center">
+
+# 🍲 RecipeHub
+
+### Sistem Informasi Resep Digital
+
+Aplikasi mobile untuk menyimpan, mengelola, dan mencari resep masakan secara digital.
+
+Built with **Flutter + PHP Native + MySQL**
+
+</div>
 
 ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white)
 ![Flutter](https://img.shields.io/badge/Flutter-Framework-02569B?logo=flutter&logoColor=white)
@@ -8,6 +18,26 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 Aplikasi mobile pencatatan resep masakan digital, dibangun dengan Flutter dan PHP Native sebagai bagian dari Ujian Akhir Semester mata kuliah **Aplikasi Nirkabel**.
+
+<div align="center">
+
+[📖 Deskripsi](#-deskripsi-project)
+•
+[✨ Fitur](#-fitur)
+•
+[🛠️ Teknologi](#️-teknologi)
+•
+[🗄️ Database](#️-database)
+•
+[🔌 REST API](#-rest-api)
+•
+[📸 Screenshots](#-screenshots)
+•
+[🚀 Instalasi](#-cara-menjalankan)
+•
+[👤 Author](#-author)
+
+</div>
 
 ---
 
@@ -99,35 +129,40 @@ RecipeHub menggunakan **MySQL** sebagai sistem manajemen basis data untuk menyim
 
 ## 🔌 REST API
 
-Berikut daftar endpoint utama yang digunakan pada aplikasi RecipeHub.
+RecipeHub menggunakan REST API berbasis PHP Native untuk menghubungkan
+aplikasi Flutter dengan database MySQL.
 
-### Autentikasi
-| Method | Endpoint          | Keterangan               |
-|--------|--------------------|----------------------------|
-| POST   | `/auth/register`   | Registrasi akun baru      |
-| POST   | `/auth/login`       | Login pengguna            |
+### 🔐 Authentication
 
-### Dashboard
-| Method | Endpoint      | Keterangan                          |
-|--------|----------------|----------------------------------------|
-| GET    | `/dashboard`   | Menampilkan ringkasan resep & kategori |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/auth/register` | Registrasi pengguna |
+| `POST` | `/auth/login` | Login pengguna |
 
-### Kategori
-| Method | Endpoint             | Keterangan               |
-|--------|------------------------|----------------------------|
-| GET    | `/categories`         | Mengambil daftar kategori |
-| POST   | `/categories`         | Menambahkan kategori baru |
-| PUT    | `/categories/{id}`    | Mengubah data kategori    |
-| DELETE | `/categories/{id}`    | Menghapus kategori        |
+### 📊 Dashboard
 
-### Resep
-| Method | Endpoint          | Keterangan             |
-|--------|--------------------|--------------------------|
-| GET    | `/recipes`         | Mengambil daftar resep  |
-| GET    | `/recipes/{id}`    | Mengambil detail resep  |
-| POST   | `/recipes`         | Menambahkan resep baru  |
-| PUT    | `/recipes/{id}`    | Mengubah data resep     |
-| DELETE | `/recipes/{id}`    | Menghapus resep         |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/dashboard` | Mengambil ringkasan jumlah resep dan kategori |
+
+### 📂 Categories
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/categories` | Mengambil seluruh kategori |
+| `POST` | `/categories` | Menambahkan kategori |
+| `PUT` | `/categories/{id}` | Mengubah kategori |
+| `DELETE` | `/categories/{id}` | Menghapus kategori |
+
+### 🍲 Recipes
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/recipes` | Mengambil daftar resep |
+| `GET` | `/recipes/{id}` | Mengambil detail resep |
+| `POST` | `/recipes` | Menambahkan resep |
+| `PUT` | `/recipes/{id}` | Mengubah resep |
+| `DELETE` | `/recipes/{id}` | Menghapus resep |
 
 ---
 
